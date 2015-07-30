@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * TechnoMile LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.forcegento.com/license-community.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@technomile.com so we can send you a copy immediately.
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * This package designed for Magento COMMUNITY edition
+ * =================================================================
+ * TechnoMile does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * TechnoMile does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category	ForceGento
+ * @package    	ForceGento_Connector
+ * @version    	0.0.1
+ * @author 		Inderjeet Sohal
+ * @copyright  	Copyright (c) 2015 TechnoMile LLC. (http://www.technomile.com)
+ * @license    	http://www.forcegento.com/license-community.txt
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <salesforce_configuration>
+                                        <title>Salesforce Configuration</title> <!-- Used in resources tree -->
+                                    </salesforce_configuration>
+									<order_configuration>
+                                        <title>Order Configuration</title> <!-- Used in resources tree -->
+                                    </order_configuration>
+									<customer_configuration>
+                                        <title>Customer Configuration</title> <!-- Used in resources tree -->
+                                    </customer_configuration>
+									<salesforce_lead_mapping_options>
+                                        <title>Salesforce Lead Mapping</title> <!-- Used in resources tree -->
+                                    </salesforce_lead_mapping_options>
+									<salesforce_account_mapping_options>
+                                        <title>Salesforce Account Mapping</title> <!-- Used in resources tree -->
+                                    </salesforce_account_mapping_options>
+									<salesforce_product_mapping_options>
+                                        <title>Salesforce Product Mapping</title> <!-- Used in resources tree -->
+                                    </salesforce_product_mapping_options>
+									<salesforce_opportunity_mapping_options>
+                                        <title>Salesforce Opportunity Mapping</title> <!-- Used in resources tree -->
+                                    </salesforce_opportunity_mapping_options>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

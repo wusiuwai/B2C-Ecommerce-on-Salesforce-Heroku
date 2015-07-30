@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * TechnoMile LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.forcegento.com/license-community.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@technomile.com so we can send you a copy immediately.
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * This package designed for Magento COMMUNITY edition
+ * =================================================================
+ * TechnoMile does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * TechnoMile does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category	ForceGento
+ * @package    	ForceGento_Connector
+ * @version    	0.0.1
+ * @author 		Inderjeet Sohal
+ * @copyright  	Copyright (c) 2015 TechnoMile LLC. (http://www.technomile.com)
+ * @license    	http://www.forcegento.com/license-community.txt
+ */
+-->
+<config>
+    <modules>
+        <ForceGento_Connector>
+            <active>true</active>
+           <codePool>community</codePool>
+       </ForceGento_Connector>
+    </modules>
+</config>

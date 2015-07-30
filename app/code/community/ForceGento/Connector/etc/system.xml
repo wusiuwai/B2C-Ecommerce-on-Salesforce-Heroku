@@ -1,0 +1,1064 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * TechnoMile LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.forcegento.com/license-community.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@technomile.com so we can send you a copy immediately.
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * This package designed for Magento COMMUNITY edition
+ * =================================================================
+ * TechnoMile does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * TechnoMile does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category	ForceGento
+ * @package    	ForceGento_Connector
+ * @version    	0.0.1
+ * @author 		Inderjeet Sohal
+ * @copyright  	Copyright (c) 2015 TechnoMile LLC. (http://www.technomile.com)
+ * @license    	http://www.forcegento.com/license-community.txt
+ */
+-->
+<config>
+    <tabs>
+        <myconf translate="label">
+            <label>ForceGento Connector API Extension</label>
+            <sort_order>150</sort_order>
+        </myconf>
+    </tabs>
+    <sections>
+        <salesforce_configuration translate="label" module="adminhtml">
+            <label>Salesforce API Configuration</label>
+            <tab>myconf</tab>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>General</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <salesforce_enable_disable translate="label comment">
+                            <label>Enable API</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </salesforce_enable_disable>
+						<salesforce_username translate="label comment">
+                            <label>Username*</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        	<validate>required-entry</validate>
+							<depends><salesforce_enable_disable>1</salesforce_enable_disable></depends>
+						</salesforce_username>
+						<salesforce_password translate="label comment">
+                            <label>Password*</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+							<depends><salesforce_enable_disable>1</salesforce_enable_disable></depends>
+                        </salesforce_password>
+						<salesforce_token translate="label comment">
+                            <label>Token*</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+							<depends><salesforce_enable_disable>1</salesforce_enable_disable></depends>
+                        </salesforce_token>
+						<salesforce_wsdl translate="label comment">
+                            <label>WSDL File*</label>
+                            <comment>Path to your WSDL file, relative to web root. Eg. lib/soapclient/enterprise.wsdl.xml</comment>
+							<frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+							<depends><salesforce_enable_disable>1</salesforce_enable_disable></depends>
+                        </salesforce_wsdl>
+						<!--<salesforce_wsdl_file translate="label comment">
+                            <label>Upload WSDL File</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">var/uploads</span></strong> folder.]]></comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir>var/uploads</upload_dir>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<depends><salesforce_enable_disable>1</salesforce_enable_disable></depends>
+                        </salesforce_wsdl_file>-->
+						<salesforce_client_type translate="label comment">
+                            <label>Client Type</label>
+                            <comment>IMPORTANT: Salesforce WSDL type, please refer to your Salesforce manual.</comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>forcegento_connector/system_config_source_dropdown_ClientType</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<depends><salesforce_enable_disable>1</salesforce_enable_disable></depends>
+                        </salesforce_client_type>	
+					 	<check translate="label">
+           					<label>Validate Salesforce Connection</label>
+							<comment>Click and validate Only after saving Salesforce credentials</comment>
+           					<frontend_type>button</frontend_type>
+           					<frontend_model>forcegentoconnector/adminhtml_system_config_form_connection</frontend_model>
+           					<sort_order>80</sort_order>
+          					<show_in_default>1</show_in_default>
+          					<tooltip>Please Validate Connection once all the Credential is saved</tooltip>
+           					<show_in_website>1</show_in_website>
+           					<show_in_store>1</show_in_store>
+                        </check>			
+                    </fields>
+                </general>
+				<salesforce_developer translate="label comment">
+                    <label>License</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <salesforce_license translate="label comment">
+                            <label>License Key:</label>
+							<comment>Validate your package with License key</comment>
+                            <frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<validate>required-entry</validate>
+                        </salesforce_license>
+						<check_license translate="label">
+           					<label>Validate License</label>
+							<comment>Click and validate Only after saving Salesforce credentials</comment>
+           					<frontend_type>button</frontend_type>
+           					<frontend_model>forcegentoconnector/adminhtml_system_config_form_license</frontend_model>
+           					<sort_order>80</sort_order>
+          					<show_in_default>1</show_in_default>
+          					<tooltip>Please Validate License once all the Credential is saved</tooltip>
+           					<show_in_website>1</show_in_website>
+           					<show_in_store>1</show_in_store>
+                        </check_license>
+						<!--<salesforce_enable_disable_log translate="label comment">
+                            <label>Enable Log</label>
+							<comment>Magento Log has to be enabled for this to work. Default location is {{base_dir}}/var/log/salesforce.log</comment>
+                            <frontend_type>select</frontend_type>
+							<sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </salesforce_enable_disable_log>
+						<salesforce_notification_email translate="label comment">
+                            <label>Notification Email</label>
+							<comment>If salesforce push fails, email the copy of the order to email@domain.com.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </salesforce_notification_email>
+						<salesforce_prefix_environment translate="label comment">
+                            <label>Environment Prefix</label>
+							<comment>Prefix to be used in email subject.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </salesforce_prefix_environment>-->
+                    </fields>
+                </salesforce_developer>
+            </groups>
+        </salesforce_configuration>
+		<order_configuration translate="label" module="adminhtml">
+            <label>Order Configuration</label>
+            <tab>myconf</tab>
+            <sort_order>2</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<default translate="label comment">
+                    <label>Default</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<salesforce_order_enable translate="label comment">
+								<label>Synchronize Orders</label>
+								<comment>Enable/Disable synchronization of Magento orders.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_order_enable>
+							<salesforce_product_enable translate="label comment">
+								<label>Synchronize Products</label>
+								<comment>Enable/Disable synchronization of Magento products.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_product_enable>
+						</fields>
+				</default>
+				<opportunity_customer_role translate="label comment">
+                    <label>Opportunity Customer Role</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<salesforce_opportunity_customer_integration_role_enable translate="label comment">
+								<label>Enable</label>
+								<comment>Enable Opportunity Customer Integration Role.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_opportunity_customer_integration_role_enable>
+							<salesforce_opportunity_customer_role_enable translate="label comment">
+								<label>Opportunity Customer Role</label>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_OpportunityCustomerRole</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<depends><salesforce_opportunity_customer_integration_role_enable>1</salesforce_opportunity_customer_integration_role_enable></depends>
+							</salesforce_opportunity_customer_role_enable>
+						</fields>
+				</opportunity_customer_role>
+				<opportunity_products translate="label comment">
+                    <label>Opportunity Products</label>
+					<comment><![CDATA[<strong>Yes:</strong> Allows you to attach ordered items to Opportunity and Enables you to sync Magento products with Salesforce.<BR/><strong>No:</strong> Opportunity in Salesforce will still be created but products wont be passing along.]]></comment>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<enable_product_integration translate="label comment">
+								<label>Enable</label>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</enable_product_integration>
+							<default_pricebook translate="label comment">
+								<label>Default Pricebook</label>
+								<comment>Standard Price Book to be used with products.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_Pricebook</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</default_pricebook>
+						</fields>
+				</opportunity_products>
+            </groups>
+        </order_configuration>
+		<customer_configuration translate="label" module="adminhtml">
+            <label>Customer Configuration</label>
+            <tab>myconf</tab>
+            <sort_order>3</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<salesforce_contact translate="label comment">
+                    <label>Contact</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<salesforce_synchronize_customer_enable translate="label comment">
+								<label>Synchronize Customers</label>
+								<comment>Enable/Disable synchronization of Magento customers.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_synchronize_customer_enable>
+							<salesforce_create_as_lead_enable translate="label comment">
+								<label>Create as Lead</label>
+								<comment>Create a Lead first. When customer converting by placing an order. Convert to Contact an Account</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<depends><salesforce_synchronize_customer_enable>1</salesforce_synchronize_customer_enable></depends>
+							</salesforce_create_as_lead_enable>
+							<!--<salesforce_converted_lead_status translate="label comment">
+								<label>Converted Lead Status</label>
+								<comment>Lead status to be set in salesforce when Lead to Contact/Account conversion takes place.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>3</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_LeadStatus</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_converted_lead_status>-->
+							<!--<salesforce_account_id translate="label comment">
+								<label>Account ID</label>
+								<comment>Default Salesforce Account ID to use for partial integration.</comment>
+								<frontend_type>text</frontend_type>
+								<sort_order>4</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_account_id>
+							<salesforce_use_person_account translate="label comment">
+								<label>Use Person Account</label>
+								<comment>Does your Salesforce allow you to create Person Accounts?</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>5</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_use_person_account>-->
+						</fields>
+				</salesforce_contact>
+				<salesforce_lead translate="label comment">
+                    <label>Lead</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<salesforce_lead_enable translate="label comment">
+								<label>Synchronize Lead</label>
+								<comment>Enable/Disable synchronization of Magento Contact Us.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_lead_enable>
+							<salesforce_contact_lead_status translate="label comment">
+								<label>Lead Status</label>
+								<comment>Lead status to be set in salesforce when Lead created.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_LeadStatus</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<depends><salesforce_lead_enable>1</salesforce_lead_enable></depends>
+							</salesforce_contact_lead_status>
+							<salesforce_contact_lead_source translate="label comment">
+								<label>Lead Source</label>
+								<comment>Lead source to be set in salesforce when Lead created.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_LeadSource</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<depends><salesforce_lead_enable>1</salesforce_lead_enable></depends>
+							</salesforce_contact_lead_source>
+							<!--<salesforce_lead_assignment_rule_enable translate="label comment">
+								<label>Lead Assignment Rule</label>
+								<comment>Apply this assignment rule to a created Lead. This value will be skipped when creating an opportunity.</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>3</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_LeadAssignment</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+							</salesforce_lead_assignment_rule_enable>-->
+						</fields>
+				</salesforce_lead>
+            </groups>
+        </customer_configuration>
+		<salesforce_lead_mapping_options translate="label" module="adminhtml">
+            <label>Salesforce Lead Mapping</label>
+            <tab>myconf</tab>
+            <sort_order>4</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<mapping_to_salesforce_leads translate="label">
+                    <label> Mapping to Salesforce Leads</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <first_name translate="label">
+                            <label>First Name: </label>
+                            <comment>Select Salesforce Lead Field 'FirstName'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<tooltip>Please Select FirstName to Map Salesforce Leads FirstName</tooltip>
+							<source_model>forcegento_connector/system_config_source_dropdown_MappingLeads</source_model>
+                        </first_name>
+						<last_name translate="label">
+                            <label>Last Name*: </label>
+                            <comment>Select Salesforce Lead Field 'LastName'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <validate>required-entry</validate>
+                            <tooltip>Please Select LastName to Map Salesforce Leads LastName</tooltip>
+							<source_model>forcegento_connector/system_config_source_dropdown_MappingLeads</source_model>
+                        </last_name>
+                        <email translate="label">
+                            <label>Email: </label>
+                            <comment>Select Salesforce Lead Field 'Email'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Email to Map Salesforce Leads Email</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingLeads</source_model>
+                        </email>
+                        <telephone translate="label">
+                            <label>Telephone: </label>
+                           <comment>Select Salesforce Lead Field 'Phone'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Phone to Map Salesforce Leads Phone</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingLeads</source_model>
+                        </telephone>
+                        <comment translate="label">
+                            <label>Comment: </label>
+                            <comment>Select Salesforce Lead Field 'Description'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Description to Map Salesforce Leads Description</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingLeads</source_model>
+                        </comment>
+                        <company translate="label">
+                            <label>Company: </label>
+                            <comment>Select Salesforce Lead Field 'Company'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Company to Map Salesforce Leads Company</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingLeads</source_model>
+                        </company>
+                    </fields>
+                </mapping_to_salesforce_leads>
+            </groups>
+        </salesforce_lead_mapping_options>
+		<salesforce_account_mapping_options translate="label" module="adminhtml">
+            <label>Salesforce Account Mapping</label>
+            <tab>myconf</tab>
+            <sort_order>5</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<mapping_to_salesforce_accounts translate="label">
+                    <label>Customer Mapping to Salesforce Accounts</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <account_name translate="label">
+                            <label>Name*: </label>
+                            <comment>Select Salesforce Account Field 'Name'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <tooltip>Please Select Name to Map Salesforce Account Name</tooltip>
+							<source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+                        </account_name>
+						<account_type translate="label">
+                            <label>Type: </label>
+                            <comment>Select Salesforce Account Field 'Type'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Type to Map Salesforce Account Type</tooltip>
+                            <validate>required-entry</validate>
+						</account_type>
+						<account_billingstreet translate="label">
+                            <label>Billing Street: </label>
+                             <comment>Select Salesforce Account Field 'BillingStreet'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select BillingStreet to Map Salesforce Account BillingStreet</tooltip>
+						</account_billingstreet>
+						<account_billingcity translate="label">
+                            <label>Billing City: </label>
+                           <comment>Select Salesforce Account Field 'BillingCity'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select BillingCity to Map Salesforce Account BillingCity</tooltip>
+						</account_billingcity>
+						<account_billingregion translate="label">
+                            <label>Billing State: </label>
+                            <comment>Select Salesforce Account Field 'BillingState'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select BillingState to Map Salesforce Account BillingState</tooltip>
+						</account_billingregion>
+						<account_billingcountry translate="label">
+                            <label>Billing Country: </label>
+                            <comment>Select Salesforce Account Field 'BillingCountry'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>6</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select BillingCountry to Map Salesforce Account BillingCountry</tooltip>
+						</account_billingcountry>
+						<account_billing_postal translate="label">
+                            <label>ZipPostal Code: </label>
+                            <comment>Select Salesforce Account Field 'BillingPostalCode'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select BillingPostalCode to Map Salesforce Account BillingPostalCode</tooltip>
+						</account_billing_postal>
+						<account_shippingstreet translate="label">
+                            <label>Shipping Street: </label>
+                            <comment>Select Salesforce Account Field 'ShippingStreet'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>8</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ShippingStreet to Map Salesforce Account ShippingStreet</tooltip>
+						</account_shippingstreet>
+						<account_shippingcity translate="label">
+                            <label>Shipping City: </label>
+                            <comment>Select Salesforce Account Field 'ShippingCity'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>9</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ShippingCity to Map Salesforce Account ShippingCity</tooltip>
+						</account_shippingcity>
+						<account_shippingstate translate="label">
+                            <label>Shipping State: </label>
+                           <comment>Select Salesforce Account Field 'ShippingState'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ShippingState to Map Salesforce Account ShippingState</tooltip>
+						</account_shippingstate>
+						<account_shippingcountry translate="label">
+                            <label>Shipping Country: </label>
+                            <comment>Select Salesforce Account Field 'ShippingCountry'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>11</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ShippingCountry to Map Salesforce Account ShippingCountry</tooltip>
+						</account_shippingcountry>
+						<account_shippingpostal translate="label">
+                            <label>ZipPostal Code: </label>
+                            <comment>Select Salesforce Account Field 'ShippingPostalCode'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>12</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ShippingPostalCode to Map Salesforce Account ShippingPostalCode</tooltip>
+					    </account_shippingpostal>
+						<account_shippingphone translate="label">
+                            <label>Phone: </label>
+                            <comment>Select Salesforce Account Field 'Phone'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>13</sort_order>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingAccounts</source_model>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Phone to Map Salesforce Account Phone</tooltip>
+					    </account_shippingphone>
+					</fields>
+                </mapping_to_salesforce_accounts>
+				<mapping_to_salesforce_contacts translate="label">
+                    <label> Mapping to Salesforce Contact</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <salesforce_contacts_first_name translate="label">
+                            <label>First Name*: </label>
+                            <comment>Select Salesforce Contact Field 'FirstName'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <tooltip>Please Select FirstName to Map Salesforce Contact FirstName</tooltip>
+							<source_model>forcegento_connector/system_config_source_dropdown_MappingContact</source_model>
+                        </salesforce_contacts_first_name>
+						<salesforce_contacts_last_name translate="label">
+                            <label>Last Name*: </label>
+                            <comment>Select Salesforce Contact Field 'LastName'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <tooltip>Please Select LastName to Map Salesforce Contact LastName</tooltip>
+							<source_model>forcegento_connector/system_config_source_dropdown_MappingContact</source_model>
+                        </salesforce_contacts_last_name>
+                        <salesforce_contacts_email translate="label">
+                            <label>Email: </label>
+                            <comment>Select Salesforce Contact Field 'Email'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+                            <tooltip>Please Select Email to Map Salesforce Contact Email</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingContact</source_model>
+                        </salesforce_contacts_email>
+						<salesforce_contacts_phone translate="label">
+                            <label>Phone: </label>
+                            <comment>Select Salesforce Contact Field 'HomePhone'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+                            <tooltip>Please Select HomePhone to Map Salesforce Contact HomePhone</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingContact</source_model>
+                        </salesforce_contacts_phone>
+                    </fields>
+                </mapping_to_salesforce_contacts>
+			</groups>
+        </salesforce_account_mapping_options>
+		<salesforce_product_mapping_options translate="label" module="adminhtml">
+            <label>Salesforce Product Mapping</label>
+            <tab>myconf</tab>
+            <sort_order>7</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<mapping_to_salesforce_products translate="label comment">
+                    <label>Mapping to Salesforce Product2</label>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<salesforce_product_name translate="label comment">
+								<label>Name</label>
+								<comment>Select Salesforce Product2 Field 'Name'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Name to Map Salesforce Product2 Name</tooltip>
+							</salesforce_product_name>
+							<salesforce_product_model translate="label comment">
+								<label>Product Model</label>
+								<comment>Select Salesforce Product2 Field 'ProductCode'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>2</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select ProductCode to Map Salesforce Product2 ProductCode</tooltip>
+							</salesforce_product_model>
+							<salesforce_product_description translate="label comment">
+								<label>Description</label>
+								<comment>Select Salesforce Product2 Field 'Description'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>3</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Description to Map Salesforce Product2 Description</tooltip>
+							</salesforce_product_description>
+							<salesforce_product_short_description translate="label comment">
+								<label>Short Description</label>
+								<comment>Select Salesforce Product2 Field 'Short Description'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>4</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Short Description to Map Salesforce Product2 Short Description</tooltip>
+							</salesforce_product_short_description>
+							<!--<salesforce_product_price translate="label comment">
+								<label>Price</label>
+								<comment>Select Salesforce Product2 Field 'HomePhone'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>4</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Name to Map Salesforce Product2 Name</tooltip>
+							</salesforce_product_price>-->
+							<salesforce_product_type translate="label comment">
+								<label>Product Type</label>
+								<comment>Select Salesforce Product2 Field 'Family'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>5</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Family to Map Salesforce Product2 Family</tooltip>
+							</salesforce_product_type>
+							<salesforce_product_weight translate="label comment">
+								<label>Weight</label>
+								<comment>Select Salesforce Product2 Field 'ForceGento__Weight__c', Note its a custom attribute created in salesforce</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>6</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select ForceGento__Weight__c to Map Salesforce Product2 ForceGento__Weight__c</tooltip>
+							</salesforce_product_weight>
+							<salesforce_product_tax_class translate="label comment">
+								<label>Tax Class</label>
+								<comment>Select Salesforce Product2 Field 'ForceGento__Tax_Class__c', Note its a custom attribute created in salesforce</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>7</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select ForceGento__Tax_Class__c to Map Salesforce Product2 ForceGento__Tax_Class__c</tooltip>
+							</salesforce_product_tax_class>
+							<salesforce_product_active translate="label comment">
+								<label>Active</label>
+								<comment>Select Salesforce Product2 Field 'IsActive'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>8</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select IsActive to Map Salesforce Product2 IsActive</tooltip>
+							</salesforce_product_active>
+							<salesforce_product_backorder translate="label comment">
+								<label>Backorder</label>
+								<comment>Select Salesforce Product2 Field 'Backorder'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>9</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Backorder to Map Salesforce Product2 Backorder</tooltip>
+							</salesforce_product_backorder>
+							<salesforce_product_qty translate="label comment">
+								<label>Quantity</label>
+								<comment>Select Salesforce Product Field 'Quantity_c', Note its a custom attribute created in salesforce</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>10</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select Quantity_c to Map Salesforce Product Quantity_c</tooltip>
+							</salesforce_product_qty>
+							<salesforce_product_stock_availability translate="label comment">
+								<label>Stock Availability</label>
+								<comment>Select Salesforce Product Field 'ForceGento__Stock_Availability__c', Note its a custom attribute created in salesforce</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>11</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingProducts</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select ForceGento__Stock_Availability__c to Map Salesforce Product ForceGento__Stock_Availability__c</tooltip>
+							</salesforce_product_stock_availability>
+						</fields>
+				</mapping_to_salesforce_products>
+				<mapping_to_salesforce_pricebook_entry translate="label comment">
+                    <label>Mapping to Salesforce PricebookEntry</label>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    	<fields>
+							<salesforce_pricebook_entry_price translate="label comment">
+								<label>Price</label>
+								<comment>Select Salesforce PricebookEntry Field 'UnitPrice'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>1</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingPricebookEntry</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select UnitPrice to Map Salesforce PricebookEntry UnitPrice</tooltip>
+							</salesforce_pricebook_entry_price>
+							<salesforce_pricebook_entry_active translate="label comment">
+								<label>Active</label>
+								<comment>Select Salesforce PricebookEntry Field 'IsActive'</comment>
+								<frontend_type>select</frontend_type>
+								<sort_order>4</sort_order>
+								<source_model>forcegento_connector/system_config_source_dropdown_MappingPricebookEntry</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>0</show_in_website>
+								<show_in_store>0</show_in_store>
+								<tooltip>Please Select IsActive to Map Salesforce PricebookEntry IsActive</tooltip>
+							</salesforce_pricebook_entry_active>
+						</fields>
+				</mapping_to_salesforce_pricebook_entry>
+			</groups>
+        </salesforce_product_mapping_options>
+		<salesforce_opportunity_mapping_options translate="label" module="adminhtml">
+            <label>Salesforce Opportunity Mapping</label>
+            <tab>myconf</tab>
+            <sort_order>8</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<mapping_to_salesforce_opportunities translate="label">
+                    <label>Order Mapping to Salesforce Opportunity</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <salesforce_opportunity_name translate="label">
+                            <label>Name: </label>
+                            <comment>Select Salesforce Opportunity Field 'Name'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Name to Map Salesforce Opportunity Name</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </salesforce_opportunity_name>
+                        <status translate="label">
+                            <label>Status: </label>
+                           <comment>Select Salesforce Opportunity Field 'StageName'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select StageName to Map Salesforce Opportunity StageName</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </status>
+                        <amount translate="label">
+                            <label>Amount: </label>
+                            <comment>Select Salesforce Opportunity Field 'Amount'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Amount to Map Salesforce Opportunity Amount</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </amount>
+                        <opportunityquantity translate="label">
+                            <label>Total Qty: </label>
+                            <comment>Select Salesforce Opportunity Field 'TotalOpportunityQuantity'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select TotalOpportunityQuantity to Map Salesforce Opportunity TotalOpportunityQuantity</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </opportunityquantity>
+                        <!--<probability translate="label">
+                            <label>Probability: </label>
+                            <comment>Select Salesforce Opportunity Field 'Probablity'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Probability to Map Salesforce Probability</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </probability>-->
+                        <leadsource translate="label">
+                            <label>Web: </label>
+                            <comment>Select Salesforce Opportunity Field 'LeadSource'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select LeadSource to Map Salesforce Opportunity LeadSource</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </leadsource>
+                        <date translate="label">
+                            <label>Close date: </label>
+                            <comment>Select Salesforce Opportunity Field 'CloseDate'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select CloseDate to Map Salesforce Opportunity CloseDate</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </date>
+                        <ordernumber translate="label">
+                            <label>Order Number: </label>
+                            <comment>Select Salesforce Opportunity Field 'ForceGento__OrderNumber__c'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ForceGento__OrderNumber__c to Map Salesforce Opportunity ForceGento__OrderNumber__c</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunities</source_model>
+                        </ordernumber>
+                    </fields>
+                </mapping_to_salesforce_opportunities>
+				<mapping_to_salesforce_opportunity_line_item translate="label">
+                    <label>Order Product Mapping to Salesforce OpportunityLineItem</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>7</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <salesforce_opportunity_line_item_qty translate="label">
+                            <label>Quantity: </label>
+                            <comment>Select Salesforce OpportunityLineItem Field 'Quantity'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select Quantity to Map Salesforce OpportunityLineItem Quantity</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunityLineItem</source_model>
+                        </salesforce_opportunity_line_item_qty>
+                        <salesforce_opportunity_line_item_total_price translate="label">
+                            <label>Total Price: </label>
+                           <comment>Select Salesforce OpportunityLineItem Field 'TotalPrice'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select TotalPrice to Map Salesforce OpportunityLineItem TotalPrice</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunityLineItem</source_model>
+                        </salesforce_opportunity_line_item_total_price>
+                        <salesforce_opportunity_line_item_service_date translate="label">
+                            <label>Service Date: </label>
+                            <comment>Select Salesforce Opportunity Field 'ServiceDate'</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>Please Select ServiceDate to Map Salesforce OpportunityLineItem ServiceDate</tooltip>
+                            <source_model>forcegento_connector/system_config_source_dropdown_MappingOpportunityLineItem</source_model>
+                        </salesforce_opportunity_line_item_service_date>
+                    </fields>
+                </mapping_to_salesforce_opportunity_line_item>
+			</groups>
+        </salesforce_opportunity_mapping_options>
+    </sections>
+</config>

@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * TechnoMile LLC.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.forcegento.com/license-community.txt
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to support@technomile.com so we can send you a copy immediately.
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * This package designed for Magento COMMUNITY edition
+ * =================================================================
+ * TechnoMile does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * TechnoMile does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category	ForceGento
+ * @package    	ForceGento_Connector
+ * @version    	0.0.1
+ * @author 		Inderjeet Sohal
+ * @copyright  	Copyright (c) 2015 TechnoMile LLC. (http://www.technomile.com)
+ * @license    	http://www.forcegento.com/license-community.txt
+ */
+-->
+<config>
+    <modules>
+        <ForceGento_Connector>
+            <version>0.0.1</version>
+        </ForceGento_Connector>
+    </modules>
+    <default>
+        <tab1>
+            <general>
+                <text_field>Default value</text_field>
+                <textarea></textarea>
+                <dropdown>key2</dropdown>
+                <multiple_dropdown>key1,key2</multiple_dropdown>
+                <time>11,30,45</time>
+                <active>0</active>
+                <boolean>1</boolean>
+                <dependant_text_field>Default value</dependant_text_field>
+            </general>
+        </tab1>
+    </default>
+	<admin>
+		<routers>
+			<adminhtml>
+				<use>admin</use>
+				<args>
+					<modules>
+                    	<ForceGento_Connector before="Mage_Adminhtml">ForceGento_Connector</ForceGento_Connector>
+                	</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<global>
+        <models>
+            <forcegento_connector>
+                <class>ForceGento_Connector_Model</class>
+            </forcegento_connector>
+			<checkout>
+				<rewrite>
+					<cart>ForceGento_Connector_Model_Cart</cart> 
+				</rewrite>
+			</checkout>
+			<wishlist>
+				<rewrite>
+					<wishlist>ForceGento_Connector_Model_Wishlist</wishlist> 
+				</rewrite>
+			</wishlist>
+        </models>
+		<helpers>
+            <forcegentoconnector>
+                <class>ForceGento_Connector_Helper</class>
+            </forcegentoconnector>
+        </helpers>
+		<blocks>
+            <adminhtml>
+                <rewrite>
+                    <customer_grid>ForceGento_Connector_Admin_Block_Customer_Grid</customer_grid>
+					<catalog_product_grid>ForceGento_Connector_Admin_Block_Catalog_Product_Grid</catalog_product_grid>
+					<sales_order_grid>ForceGento_Connector_Admin_Block_Sales_Order_Grid</sales_order_grid>
+					<newsletter_subscriber_grid>ForceGento_Connector_Admin_Block_Newsletter_Subscriber_Grid</newsletter_subscriber_grid>
+                </rewrite>
+            </adminhtml>
+			<forcegentoconnector>
+                <class>ForceGento_Connector_Block</class>
+            </forcegentoconnector>
+        </blocks>
+		<resources>
+            <salesforce_setup>
+                <setup>
+                    <module>ForceGento_Connector</module>
+                    <class>ForceGento_Connector_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </salesforce_setup>
+            <salesforce_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </salesforce_write>
+            <salesforce_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </salesforce_read>
+        </resources> 
+    </global>
+	<admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ForceGento_Connector_Adminhtml before="Mage_Adminhtml">ForceGento_Connector_Adminhtml</ForceGento_Connector_Adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	<frontend> 
+		<routers> 
+			<forcegento_connector_contacts> 
+				<use>standard</use> 
+				<args> 
+					<module>ForceGento_Connector_Contacts</module>
+					<frontName>contacts</frontName> 
+				</args>
+			</forcegento_connector_contacts> 
+			<forcegento_connector_customer> 
+				<use>standard</use> 
+				<args> 
+					<module>ForceGento_Connector_Customer</module>
+					<frontName>customer</frontName> 
+				</args>
+			</forcegento_connector_customer> 
+			<forcegento_connector_newsletter> 
+				<use>standard</use> 
+				<args> 
+					<module>ForceGento_Connector_Newsletter</module>
+					<frontName>newsletter</frontName> 
+				</args>
+			</forcegento_connector_newsletter> 
+			<checkout>
+				<args>
+					<modules>
+						<ForceGento_Connector_Checkout before="Mage_Checkout">ForceGento_Connector_Checkout</ForceGento_Connector_Checkout>
+					</modules>
+				</args>
+			</checkout>
+			<forcegento_connector_tickets>
+                <use>standard</use>
+                <args>
+                    <module>ForceGento_Connector_Tickets</module>
+                    <frontName>tickets</frontName>
+                </args>
+            </forcegento_connector_tickets>
+		</routers> 
+	</frontend>
+	<crontab>
+        <jobs>
+		    <salesforce_magento_customer_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::salesforce_magento_customer_sync</model>
+                </run>
+            </salesforce_magento_customer_sync>
+			<!--<magento_salesforce_add_customer_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_add_customer_sync</model>
+                </run>
+            </magento_salesforce_add_customer_sync>
+			<magento_salesforce_edit_customer_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_edit_customer_sync</model>
+                </run>
+            </magento_salesforce_edit_customer_sync>-->
+			<salesforce_magento_product_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::salesforce_magento_product_sync</model>
+                </run>
+            </salesforce_magento_product_sync>
+			<!--<magento_salesforce_add_product_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_add_product_sync</model>
+                </run>
+            </magento_salesforce_add_product_sync>
+			<magento_salesforce_edit_product_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_edit_product_sync</model>
+                </run>
+            </magento_salesforce_edit_product_sync>-->
+			<salesforce_magento_order_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::salesforce_magento_order_sync</model>
+                </run>
+            </salesforce_magento_order_sync>
+			<!--<magento_salesforce_add_order_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_add_order_sync</model>
+                </run>
+            </magento_salesforce_add_order_sync>
+			<magento_salesforce_edit_order_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_edit_order_sync</model>
+                </run>
+            </magento_salesforce_edit_order_sync>
+			<magento_salesforce_edit_invoice_sync>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_edit_invoice_sync</model>
+                </run>
+            </magento_salesforce_edit_invoice_sync>-->
+			<magento_salesforce_visitors_logs>
+                <schedule>
+                    <cron_expr>*/59 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>forcegento_connector/synchronization::magento_salesforce_visitors_logs</model>
+                </run>
+            </magento_salesforce_visitors_logs>
+        </jobs>
+    </crontab> 
+</config>
