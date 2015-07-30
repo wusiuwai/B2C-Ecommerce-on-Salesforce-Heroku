@@ -1,5 +1,5 @@
 {
-    "name": "TechnoMile",
-    "description": "TechnoMile Ecommerce App",
+    "name": "ForceGento",
+    "description": "B2C eCommerce with Salesforce",
     "addons": ["cleardb:punch","newrelic:wayne","sendgrid:starter"]
 }
