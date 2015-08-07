@@ -1,2 +1,1 @@
-# ForceGento
-B2C eCommerce with Salesforce
+# B2C Ecommerce on Salesforce/Heroku
