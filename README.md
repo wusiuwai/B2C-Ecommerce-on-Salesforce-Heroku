@@ -8,7 +8,7 @@ You can deploy your own version of B2C eCommerce with Salesforce on Heroku in se
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/technomile/B2C-Ecommerce-on-Salesforce-Heroku)
 
-You can see a live demo at [B2C eCommerce](http://heroku-magento-salesforce.herokuapp.com/)
+You can see a live demo at [ForceGento](http://heroku-magento-salesforce.herokuapp.com/)
 
 [![Add-ons](http://www.technomile.com/wp-content/uploads/2015/03/feature.jpg)](http://www.technomile.com)
 
