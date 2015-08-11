@@ -12,4 +12,4 @@ You can see a live demo at [B2C eCommerce](http://heroku-magento-salesforce.hero
 
 [![Add-ons](http://www.technomile.com/wp-content/uploads/2015/03/feature.jpg)](http://www.technomile.com)
 
-Check out the [documentation](http://technomile.github.io/b2c-ecommerce-on-salesforce-heroku/) to learn more about B2C eCommerce with Salesforce and to set up your own instance.
+Check out the [documentation](http://technomile.github.io/saleforceb2cecomm/) to learn more about B2C eCommerce with Salesforce and to set up your own instance.
