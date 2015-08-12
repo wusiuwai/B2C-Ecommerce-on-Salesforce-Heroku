@@ -1,7 +1,7 @@
 [![ForceGento](http://technomile.github.io/img/forcegento_github.gif)](http://www.technomile.com)
 # B2C eCommerce with Salesforce
 
-[![Magento](http://www.technomile.com/wp-content/uploads/2015/08/SalesforceHerokuApp-06.png)](http://www.technomile.com)
+[![Magento](http://www.technomile.com/wp-content/uploads/2015/08/Herokumagentosalesforce.png)](http://www.technomile.com)
 
 Build a highly scalable and intuitive online sales environment by integrating Magento and Salesforce CRM customers, orders, products, and leads seamlessly. Built on the Heroku platform this application provides online merchants creative and logistic control for their business.
 
