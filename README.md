@@ -1,4 +1,4 @@
-[![ForceGento](http://technomile.github.io/img/forcegento_github.png)](http://www.technomile.com)
+[![ForceGento](http://technomile.github.io/img/forcegento_github.gif)](http://www.technomile.com)
 # B2C eCommerce with Salesforce
 
 [![Magento](http://www.technomile.com/wp-content/uploads/2015/08/SalesforceHerokuApp-06.png)](http://www.technomile.com)
