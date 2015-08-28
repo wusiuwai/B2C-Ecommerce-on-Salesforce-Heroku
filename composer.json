@@ -1,0 +1,14 @@
+{
+    "name": "technomile/B2C-Ecommerce-on-Salesforce-Heroku",
+    "description": "Build a highly scalable and intuitive online sales environment by integrating Magento and Salesforce CRM. Utilize customer profiles, orders, products, and leads seamlessly. Built on the Heroku platform this application provides online merchants creative and logistic control for their business.",
+    "keywords": ["heroku", "magento", "php", "hhvm", "apache", "apache2", "nginx", "salesforce"],
+    "homepage": "http://github.com/technomile/B2C-Ecommerce-on-Salesforce-Heroku",
+    "type": "heroku-buildpack",
+    "license": "OSL 3.0",
+    "authors": [
+        {
+            "name": "Inderjeet Sohal",
+            "email": "inderjeets@technomile.com"
+        }
+    ]
+}
