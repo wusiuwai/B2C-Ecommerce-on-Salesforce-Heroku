@@ -1,6 +1,6 @@
 {
 	"name": "ForceGento",
-	"description": "Build a highly scalable and intuitive online sales environment by integrating Magento and Salesforce CRM. Utilize customer profiles, orders, products, and leads seamlessly. Built on the Heroku platform this application provides online merchants creative and logistic control for their business.",
+	"description": "Build a highly scalable and intuitive online sales environment by integrating Magento and Salesforce CRM.",
 	"repository": "https://github.com/technomile/B2C-Ecommerce-on-Salesforce-Heroku",
 	"logo": "http://technomile.github.io/img/forcegento.gif",
 	"keywords": ["magento", "salesforce", "heroku", "php", "mysql", "apache", "apache2", "nginx"],
