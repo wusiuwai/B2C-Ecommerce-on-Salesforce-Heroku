@@ -1,6 +1,14 @@
 {
-	"require": {
-        "ext-soap": "*",
-		"ext-gd": "*"
-    }
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "This file is @generated automatically"
+    ],
+    "packages": [
+        {
+            "require": {
+                "ext-soap": "*",
+                "ext-gd": "*"
+            }
+        }
+    ]
 }
