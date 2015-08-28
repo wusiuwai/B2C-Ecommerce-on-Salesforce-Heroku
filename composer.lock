@@ -34,7 +34,7 @@
 				"apache2", 
 				"nginx", 
 				"salesforce"
-            ],
+            ]
         }
     ]
 }
