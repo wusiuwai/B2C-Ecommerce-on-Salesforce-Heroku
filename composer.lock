@@ -1,40 +1,21 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "packages": [
-        {
-            "name": "technomile/B2C-Ecommerce-on-Salesforce-Heroku",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/technomile/B2C-Ecommerce-on-Salesforce-Heroku.git"
-            },
-			"require": {
-                "ext-soap": "*",
-                "ext-gd": "*"
-            },
-			"type": "heroku-buildpack",
-			"license": [
-                "OSL 3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Inderjeet Sohal",
-                    "email": "inderjeets@technomile.com",
-                    "homepage": "http://technomile.github.io"
-                }
-            ],
-            "description": "Build a highly scalable and intuitive online sales environment by integrating Magento and Salesforce CRM. Utilize customer profiles, orders, products, and leads seamlessly. Built on the Heroku platform this application provides online merchants creative and logistic control for their business.",
-            "keywords": [
-                "heroku", 
-				"magento", 
-				"php", 
-				"apache", 
-				"apache2", 
-				"nginx", 
-				"salesforce"
-            ]
-        }
-    ]
+    "hash": "8012f56874a178c447bedd10167a188b",
+    "content-hash": "b7161a11a19954b4d18bd6d0ad857e8d",
+    "packages": [],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-soap": "*",
+        "ext-gd": "*"
+    },
+    "platform-dev": []
 }
