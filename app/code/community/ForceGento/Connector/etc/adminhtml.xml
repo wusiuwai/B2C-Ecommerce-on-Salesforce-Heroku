@@ -32,7 +32,27 @@
  */
 -->
 <config>
-    <acl>
+    
+	<menu>
+        <!--
+        This item will be created in the Admin menu under Sales
+        - If you want another section, reference the appropriate adminhtml.xml file in app/code/core/Mage/Modulename/etc
+        - For example, we found out this was 'sales' by referencing the config/menu node of app/code/core/Mage/Sales/etc/adminhtml.xml
+        -->
+        <system>
+            <children>
+                <!-- Here, I like to use the namespacename_modulename_controllername naming convention -->
+                <forcegento_connector_log translate="title" module="forcegento_connector">
+                    <!-- This is how the menu text will be displayed -->
+                    <title>ForceGento Log</title>
+                    <!-- This is the URL of what we want the menu item to link to -->
+                    <action>adminhtml/log</action>
+                </forcegento_connector_log>
+            </children>
+        </system>
+    </menu>
+	
+	<acl>
         <resources>
             <admin>
                 <children>

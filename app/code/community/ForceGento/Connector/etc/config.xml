@@ -67,6 +67,7 @@
         <models>
             <forcegento_connector>
                 <class>ForceGento_Connector_Model</class>
+				<resourceModel>forcegento_connector_mysql4</resourceModel>
             </forcegento_connector>
 			<checkout>
 				<rewrite>
@@ -78,11 +79,21 @@
 					<wishlist>ForceGento_Connector_Model_Wishlist</wishlist> 
 				</rewrite>
 			</wishlist>
+			<forcegento_connector_mysql4>
+                <class>ForceGento_Connector_Model_Mysql4</class>
+                <entities>
+                    <!-- Let's define our table, we'll call it with the log name, but the real table is forcegento_connector_log -->
+                    <!-- After we define our entity, we can call it with our model by calling forcegento_connector/log -->
+                    <log>
+                        <table>forcegento_connector_log</table>
+                    </log>
+                </entities>
+            </forcegento_connector_mysql4>
         </models>
 		<helpers>
-            <forcegentoconnector>
+            <forcegento_connector>
                 <class>ForceGento_Connector_Helper</class>
-            </forcegentoconnector>
+            </forcegento_connector>
         </helpers>
 		<blocks>
             <adminhtml>
@@ -93,9 +104,9 @@
 					<newsletter_subscriber_grid>ForceGento_Connector_Admin_Block_Newsletter_Subscriber_Grid</newsletter_subscriber_grid>
                 </rewrite>
             </adminhtml>
-			<forcegentoconnector>
+			<forcegento_connector>
                 <class>ForceGento_Connector_Block</class>
-            </forcegentoconnector>
+            </forcegento_connector>
         </blocks>
 		<resources>
             <salesforce_setup>
@@ -171,94 +182,125 @@
 	</frontend>
 	<crontab>
         <jobs>
-		    <salesforce_magento_customer_sync>
+		    <!--<salesforce_magento_customer_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::salesforce_magento_customer_sync</model>
                 </run>
-            </salesforce_magento_customer_sync>
-			<!--<magento_salesforce_add_customer_sync>
+            </salesforce_magento_customer_sync>-->
+			<magento_salesforce_add_customer_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_add_customer_sync</model>
                 </run>
             </magento_salesforce_add_customer_sync>
 			<magento_salesforce_edit_customer_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_edit_customer_sync</model>
                 </run>
-            </magento_salesforce_edit_customer_sync>-->
-			<salesforce_magento_product_sync>
+            </magento_salesforce_edit_customer_sync>
+			<!--<salesforce_magento_product_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::salesforce_magento_product_sync</model>
                 </run>
-            </salesforce_magento_product_sync>
-			<!--<magento_salesforce_add_product_sync>
+            </salesforce_magento_product_sync>-->
+			<magento_salesforce_add_product_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_add_product_sync</model>
                 </run>
             </magento_salesforce_add_product_sync>
 			<magento_salesforce_edit_product_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_edit_product_sync</model>
                 </run>
-            </magento_salesforce_edit_product_sync>-->
-			<salesforce_magento_order_sync>
+            </magento_salesforce_edit_product_sync>
+			<!--<salesforce_magento_order_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::salesforce_magento_order_sync</model>
                 </run>
-            </salesforce_magento_order_sync>
-			<!--<magento_salesforce_add_order_sync>
+            </salesforce_magento_order_sync>-->
+			<magento_salesforce_add_order_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_add_order_sync</model>
                 </run>
             </magento_salesforce_add_order_sync>
 			<magento_salesforce_edit_order_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_edit_order_sync</model>
                 </run>
             </magento_salesforce_edit_order_sync>
 			<magento_salesforce_edit_invoice_sync>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_edit_invoice_sync</model>
                 </run>
-            </magento_salesforce_edit_invoice_sync>-->
+            </magento_salesforce_edit_invoice_sync>
 			<magento_salesforce_visitors_logs>
                 <schedule>
+					
                     <cron_expr>*/59 * * * *</cron_expr>
                 </schedule>
                 <run>
+                    
                     <model>forcegento_connector/synchronization::magento_salesforce_visitors_logs</model>
                 </run>
             </magento_salesforce_visitors_logs>
         </jobs>
-    </crontab> 
+    </crontab>
+	<adminhtml>
+        <layout>
+            <updates>
+                <forcegento_connector>
+                    <file>forcegento/connector.xml</file>
+                </forcegento_connector>
+            </updates>
+        </layout>
+    </adminhtml> 
 </config>
