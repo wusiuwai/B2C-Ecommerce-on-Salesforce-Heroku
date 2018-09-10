@@ -7,7 +7,7 @@ Build a highly scalable and intuitive online sales environment by integrating Ma
 
 You can deploy your own version of ForceGento on Heroku in seconds using the Heroku button below:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/technomile/B2C-Ecommerce-on-Salesforce-Heroku)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/wusiuwai/B2C-Ecommerce-on-Salesforce-Heroku)
 
 Click [here](http://heroku-magento-salesforce.herokuapp.com/) to can see a live demo.
 
